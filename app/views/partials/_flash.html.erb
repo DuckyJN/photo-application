@@ -1,0 +1,13 @@
+<% if flash %>
+    <ul>
+    <% flash.each do |message_type, message| %>
+        <% if message.kind_of?(Array) %>
+            <% message.each do |item| %>
+                <li class="alert alert-<%= message_type %>"><%= item %></li>
+            <% end %>
+        <% else %>
+            <li class="alert alert-<%= message_type %>"><%= message %></li>
+        <% end %>
+    <% end %>
+    </ul>
+<% end %>
