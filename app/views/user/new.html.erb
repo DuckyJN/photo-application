@@ -1,2 +1,14 @@
-<h1>User#new</h1>
-<p>Find me in app/views/user/new.html.erb</p>
+<h1>サインアップ</h1>
+<%= render partial: "partials/flash" %>
+
+<%= form_with(model: User.new, url: user_create_path) do |f| %>
+
+    <%= f.label :username, "ユーザーID" %>
+    <%= f.text_field :username %>
+    <br>
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password %>
+    <br>
+
+    <%=  submit_tag("ユーザー作成") %>
+<% end %>
