@@ -19,3 +19,6 @@
 ```
 brew install imagemagick
 ```
+
+## そのほか
+かかった時間: 13時間
