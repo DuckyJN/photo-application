@@ -1,0 +1,15 @@
+<h1>写真アップロード</h1>
+<%= render partial: "partials/flash" %>
+<%= form_with(model: photo) do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :gallery_id, value: current_user.gallery.id %>
+
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :image, "画像ファイル" %>
+    <%= f.file_field :image, direct_upload: true %>
+    <br>
+    <%= f.submit "アップロード"%>
+    <%= link_to "キャンセル", user_index_path %>
+<% end %>

@@ -1,6 +1,8 @@
-<h1> Hello and Welcome <h1> 
-<% if current_user %>
+<h1> Hello and Welcome </h1> 
+<% if logged_in? %>
     <%= link_to 'Logout', '/logout', :data => { :confirm => 'Are you sure?' }%>
+    <br>
+    <%= render partial: "gallery/index" %>
 <% else %>
     <%= link_to 'Signup', '/signup' %>
     <%= link_to 'Login', '/login' %>

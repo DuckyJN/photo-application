@@ -1,0 +1,12 @@
+<%= link_to "写真アップロード画面", new_photo_path %>
+<br>
+<% if @photos.exists? %>
+    <% @photos.each do |photo| %>
+        <div>
+        <%= label_tag :title, photo.title %><br>
+        <%= image_tag(photo.image.representation(resize: "150x150")) %>
+        </div>
+    <% end %>
+<% else %>
+    写真がない
+<% end %>

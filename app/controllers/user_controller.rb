@@ -2,10 +2,11 @@ class UserController < ApplicationController
   before_action :set_user, only: [:show]
   
   def create
-    p params
-    user = User.new(user_params)
-    if user.save
+    @user = User.new(user_params)
+    if @user.save
+      Gallery.new(user_id: @user.id).save
       flash[:notice]="Signup successful"
+      redirect_to '/login'
     else
       flash[:alert] ||= []
       user.errors.full_messages.each do |message|
@@ -19,6 +20,7 @@ class UserController < ApplicationController
   end
 
   def index
+    @photos = current_user.gallery.photos.order("created_at DESC") if current_user
   end
 
   private
